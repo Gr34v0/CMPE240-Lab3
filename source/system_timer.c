@@ -21,11 +21,13 @@ void timer_delay_us(uint32_t delayUs)
 void timer_delay_ms(uint32_t delayMs)
 {
     // scale the microsecond delay appropriately
+    timer_delay_us(1000 * delayMs);
     
 }
 
 void timer_delay_sec(uint32_t delaySec)
 {
     // scale the microsecond delay appropriately
+    timer_delay_us(1000000 * delaySec);
     
 }
