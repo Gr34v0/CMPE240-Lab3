@@ -2,6 +2,7 @@
 
 void timer_delay_us(uint32_t delayUs)
 {
+    //Page 172 of manual
     // First, get the current count of the timer.
     
 

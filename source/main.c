@@ -10,14 +10,14 @@ void blink_once()
     gpio[GPCLR0] |= (1 << 3);
 
     //apply a delay
-    delay(countValue);
+    timer_delay_sec(1);
 
     //toggle set register for the chosen pin
     // Turn LED off
     gpio[GPSET0] |= (0 << 3);
 
     //apply a delay
-    delay(countValue);
+    delay_delay_sec(1);
 }
 
 void blink_code(uint32_t err)
@@ -25,17 +25,20 @@ void blink_code(uint32_t err)
     for(int i = 0; i < err; ++i)
     {
         // Blink the LED
+        blink_once();
 
     }
 
     // Delay for desired time
+    timer_delay_sec(5);
     
 }
 
 int main()
 {
     // Init GPIO select for external LED
-    gpio[GPFSEL0] = 0x<SOMETHING>;
+    //GPIO3
+    gpio[GPFSEL0] = (1 << 9);
 
     // Init uart for debugging purposes
     init_uart();
@@ -52,6 +55,7 @@ int main()
         // implement error code described in lab
 
         // call blink_code at some point
+        //error code has to match 900000 if lab 1 was right
         blink_code(     );
 
     }
