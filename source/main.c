@@ -20,6 +20,7 @@ void blink_once()
     delay_delay_sec(1);
 }
 
+//On for one second, off for 5 seconds, on for one second......
 void blink_code(uint32_t err)
 {
     for(int i = 0; i < err; ++i)
