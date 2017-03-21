@@ -9,6 +9,8 @@ void blink_once()
     // Turn LED on
     gpio[GPCLR0] |= (1 << 3);
 
+    timer_delay_sec(1);
+
     //toggle set register for the chosen pin
     // Turn LED off
     gpio[GPSET0] |= (0 << 3);

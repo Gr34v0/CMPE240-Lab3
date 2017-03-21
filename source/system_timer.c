@@ -4,18 +4,23 @@ void timer_delay_us(uint32_t delayUs)
 {
     //Page 172 of manual
     // First, get the current count of the timer.
-    
+    uint32_t x = sys_timer[SYS_TIMER_CLO];
 
     // Next, add the delay to the current count.
-    // and, put that into the C0 timer register.
-    
+    // and, put that into the C0 timer register;
+    x = x + delayUs;
+    sys_timer[];
 
     // Clear the M0 timer register.
+    sys_timer[SYS_TIMER_CS] |= (0 << 0);
     
 
     // Now we spin until the CS register
     // has a 1 in the 0 position, then we know
     // our timer has expired.
+    while(!sys_timer[SYS_TIMER_CS]){
+        //NOOP
+    }
     
 }
 
