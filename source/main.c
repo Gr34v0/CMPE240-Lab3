@@ -49,12 +49,18 @@ int main()
     // Mainline loop
     while (1)
     {
+        count = count % 10;
         // implement error code described in lab
 
-        // call blink_code at some point
-        //error code has to match 900000 if lab 1 was right
-        blink_code(     );
+        if(count != 0){
 
+            //call blink_code at some point
+            //error code has to match 900000 if lab 1 was right
+            blink_code(count);
+
+        }
+        
+        ++count;
     }
     
     return 0;

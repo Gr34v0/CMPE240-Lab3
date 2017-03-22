@@ -1,5 +1,8 @@
 #include "system_timer.h"
 
+#define checkTimerMatch(bit) ((sys_timer[SYS_TIMER_CS] & (1 << bit)) == 0 ) //Returns True when bit at "bit"
+                                                                            // is 1
+
 void timer_delay_us(uint32_t delayUs)
 {
     //Page 172 of manual
@@ -9,7 +12,7 @@ void timer_delay_us(uint32_t delayUs)
     // Next, add the delay to the current count.
     // and, put that into the C0 timer register;
     x = x + delayUs;
-    sys_timer[];
+    sys_timer[SYS_TIMER_C0] = x;
 
     // Clear the M0 timer register.
     sys_timer[SYS_TIMER_CS] |= (0 << 0);
@@ -18,10 +21,9 @@ void timer_delay_us(uint32_t delayUs)
     // Now we spin until the CS register
     // has a 1 in the 0 position, then we know
     // our timer has expired.
-    while(!sys_timer[SYS_TIMER_CS]){
+    while(checkTimerMatch(0)){
         //NOOP
     }
-    
 }
 
 void timer_delay_ms(uint32_t delayMs)
