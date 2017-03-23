@@ -15,7 +15,7 @@ void timer_delay_us(uint32_t delayUs)
     sys_timer[SYS_TIMER_C0] = x;
 
     // Clear the M0 timer register.
-    sys_timer[SYS_TIMER_CS] |= (0 << 0);
+    sys_timer[SYS_TIMER_CS] &= (0 << 0);
     
 
     // Now we spin until the CS register
